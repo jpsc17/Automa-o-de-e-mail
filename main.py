@@ -13,12 +13,12 @@ def enviar_email():
 
     mensagem = MIMEMultipart()
     mensagem["From"] = remetente
-    mensagem["To"] = destinatario   # CORRIGIDO: Use "To" (com T maiúsculo) e acesso de dicionário
-    mensagem["Subject"] = assunto   # CORRIGIDO: Acesso de dicionário
+    mensagem["To"] = destinatario   
+    mensagem["Subject"] = assunto   
     mensagem.attach(MIMEText(corpo, "plain"))
 
     # Atenção: "smpt.gmail.com" está errado, o correto é "smtp.gmail.com"
-    servidor = smtplib.SMTP("smtp.gmail.com", 587) # CORRIGIDO: smtp ao invés de smpt
+    servidor = smtplib.SMTP("smtp.gmail.com", 587) 
     servidor.starttls()
     servidor.login(remetente, senha)
     servidor.sendmail(remetente, destinatario, mensagem.as_string())
